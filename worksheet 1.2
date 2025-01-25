@@ -1,0 +1,21 @@
+import java.math.BigDecimal;
+
+public class ArithmeticOperations {
+    public static void main(String[] args) {
+        String num1 = "12.5";
+        String num2 = "3.5";
+
+        BigDecimal number1 = new BigDecimal(num1);
+        BigDecimal number2 = new BigDecimal(num2);
+
+        BigDecimal addition = number1.add(number2);
+        BigDecimal subtraction = number1.subtract(number2);
+        BigDecimal multiplication = number1.multiply(number2);
+        BigDecimal division = number1.divide(number2);
+
+        System.out.println("Addition: " + addition);
+        System.out.println("Subtraction: " + subtraction);
+        System.out.println("Multiplication: " + multiplication);
+        System.out.println("Division: " + division);
+    }
+}
