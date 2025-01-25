@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class BankingSystem {
+    private double[] accountBalances;
+    private String[] transactionIDs;
+
+    public BankingSystem(double[] accountBalances, String[] transactionIDs) {
+        this.accountBalances = accountBalances;
+        this.transactionIDs = transactionIDs;
+    }
+
+    public double calculateAverageBalance() throws ArithmeticException {
+        if (accountBalances.length == 0) {
+            throw new ArithmeticException("No account holders available.");
+        }
+        double totalBalance = 0;
+        for (double balance : accountBalances) {
+            totalBalance += balance;
+        }
+        return totalBalance / accountBalances.length;
+    }
+
+    public String getTransactionID(int index) throws ArrayIndexOutOfBoundsException {
+        return transactionIDs[index];
+    }
+
+    public static void main(String[] args) {
+        double[] balances = {1000.50, 2000.75, 1500.00};
+        String[] transactionIDs = {"TXN001", "TXN002", "TXN003"};
+
+        BankingSystem bank = new BankingSystem(balances, transactionIDs);
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            double averageBalance = bank.calculateAverageBalance();
+            System.out.println("Average Account Balance: " + averageBalance);
+        } catch (ArithmeticException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        System.out.print("Enter transaction ID index to retrieve: ");
+        int index = scanner.nextInt();
+
+        try {
+            String transactionID = bank.getTransactionID(index);
+            System.out.println("Transaction ID: " + transactionID);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
